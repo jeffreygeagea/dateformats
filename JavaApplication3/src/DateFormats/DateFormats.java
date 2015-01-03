@@ -1,4 +1,4 @@
-6package DateFormats;
+package DateFormats;
 
 public class DateFormats {
     

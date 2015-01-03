@@ -6,6 +6,8 @@
 
 package DateFormats;
 
+
+import javax.swing.JOptionPane;
 /**
  *
  * @author hp
@@ -17,6 +19,9 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        cbShortDate.setSelected(true);
+        rootPane.setDefaultButton(btnSubmit);
     }
 
     /**
@@ -57,6 +62,12 @@ public class GUI extends javax.swing.JFrame {
 
         lblDay.setText("Day:");
 
+        txtDay.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDayKeyTyped(evt);
+            }
+        });
+
         lblMonth.setText("Month:");
 
         txtMonth.addActionListener(new java.awt.event.ActionListener() {
@@ -64,8 +75,19 @@ public class GUI extends javax.swing.JFrame {
                 txtMonthActionPerformed(evt);
             }
         });
+        txtMonth.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMonthKeyTyped(evt);
+            }
+        });
 
         lblYear.setText("Year:");
+
+        txtYear.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtYearKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDateLayout = new javax.swing.GroupLayout(pnlDate);
         pnlDate.setLayout(pnlDateLayout);
@@ -104,6 +126,11 @@ public class GUI extends javax.swing.JFrame {
         lblType.setText("Type:");
 
         cbShortDate.setText("Short Date");
+        cbShortDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbShortDateActionPerformed(evt);
+            }
+        });
 
         cbLongDate.setText("Long Date");
 
@@ -112,10 +139,35 @@ public class GUI extends javax.swing.JFrame {
         lblLongDate.setText("Long Date:");
 
         cbxShortDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "dd/MM/yy", "MM-dd-yy", "yy.MM.dd", "dd,yy,MM" }));
+        cbxShortDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxShortDateActionPerformed(evt);
+            }
+        });
 
         cbxLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yyyy", "dd,yyyy MMMM", "yyyy,dd MMMM" }));
+        cbxLongDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxLongDateActionPerformed(evt);
+            }
+        });
+        cbxLongDate.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbxLongDateKeyPressed(evt);
+            }
+        });
 
         btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+        btnSubmit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnSubmitKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlFormatsLayout = new javax.swing.GroupLayout(pnlFormats);
         pnlFormats.setLayout(pnlFormatsLayout);
@@ -232,8 +284,82 @@ public class GUI extends javax.swing.JFrame {
 
     private void txtMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMonthActionPerformed
         // TODO add your handling code here
-       
+   
     }//GEN-LAST:event_txtMonthActionPerformed
+
+    private void cbxLongDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxLongDateActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cbxLongDateActionPerformed
+
+    private void cbxShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxShortDateActionPerformed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_cbxShortDateActionPerformed
+
+    private void cbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShortDateActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_cbShortDateActionPerformed
+
+    private void cbxLongDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbxLongDateKeyPressed
+        // TODO add your handling code here:
+         
+    }//GEN-LAST:event_cbxLongDateKeyPressed
+
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        // TODO add your handling code here:
+         int val = Integer.parseInt(txtDay.getText()); 
+if ( (val >= 31)||(val<1)){ 
+JOptionPane.showMessageDialog(this,"Please enter a day between 1 and 31","Warning",JOptionPane.INFORMATION_MESSAGE);}
+       
+        if(txtDay.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a day","Warning",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(txtMonth.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a month","Warning",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        else if(txtYear.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a year","Warning",JOptionPane.INFORMATION_MESSAGE);
+        }
+       
+    }//GEN-LAST:event_btnSubmitActionPerformed
+
+    private void txtMonthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMonthKeyTyped
+        // TODO add your handling code here:
+            if(txtMonth.getText().length()>=2){
+evt.consume();
+}
+    }//GEN-LAST:event_txtMonthKeyTyped
+
+    private void txtDayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayKeyTyped
+        // TODO add your handling code here:
+            if(txtDay.getText().length()>=2){
+evt.consume();
+}
+    }//GEN-LAST:event_txtDayKeyTyped
+
+    private void txtYearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearKeyTyped
+        // TODO add your handling code here:
+            if(txtYear.getText().length()>=4){
+evt.consume();
+}
+    }//GEN-LAST:event_txtYearKeyTyped
+
+    private void btnSubmitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSubmitKeyPressed
+        // TODO add your handling code here:
+        if(txtDay.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a day","Warning",JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(txtMonth.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a month","Warning",JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        else if(txtYear.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a year","Warning",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_btnSubmitKeyPressed
 
     /**
      * @param args the command line arguments

@@ -101,6 +101,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtDay">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDayKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMonth">
           <Properties>
@@ -110,6 +113,7 @@
         <Component class="javax.swing.JTextField" name="txtMonth">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMonthActionPerformed"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMonthKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblYear">
@@ -118,6 +122,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtYear">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtYearKeyTyped"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -199,6 +206,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Short Date"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbShortDateActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cbLongDate">
           <Properties>
@@ -226,6 +236,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxShortDateActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbxLongDate">
           <Properties>
@@ -237,11 +250,19 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbxLongDateActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cbxLongDateKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnSubmit">
           <Properties>
             <Property name="text" type="java.lang.String" value="Submit"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubmitActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="btnSubmitKeyPressed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
