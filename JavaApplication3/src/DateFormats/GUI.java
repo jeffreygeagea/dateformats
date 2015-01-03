@@ -231,7 +231,8 @@ public class GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMonthActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
+       
     }//GEN-LAST:event_txtMonthActionPerformed
 
     /**
