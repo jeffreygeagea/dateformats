@@ -133,19 +133,24 @@ public class GUI extends javax.swing.JFrame {
         });
 
         cbLongDate.setText("Long Date");
+        cbLongDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLongDateActionPerformed(evt);
+            }
+        });
 
         lblShortDate.setText("Short Date: ");
 
         lblLongDate.setText("Long Date:");
 
-        cbxShortDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "dd/MM/yy", "MM-dd-yy", "yy.MM.dd", "dd,yy,MM" }));
+        cbxShortDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "dd/MM/yy", "MM-dd-yy", " " }));
         cbxShortDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxShortDateActionPerformed(evt);
             }
         });
 
-        cbxLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yyyy", "dd,yyyy MMMM", "yyyy,dd MMMM" }));
+        cbxLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yyyy", "dd,yyyy MMMM" }));
         cbxLongDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxLongDateActionPerformed(evt);
@@ -299,7 +304,11 @@ public class GUI extends javax.swing.JFrame {
 
     private void cbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShortDateActionPerformed
         // TODO add your handling code here:
-       
+        if(cbShortDate.isSelected()){
+        cbxShortDate.setEnabled(true);}
+        else{
+cbxShortDate.setEnabled(false);
+        }
     }//GEN-LAST:event_cbShortDateActionPerformed
 
     private void cbxLongDateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbxLongDateKeyPressed
@@ -310,12 +319,26 @@ public class GUI extends javax.swing.JFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
          int val = Integer.parseInt(txtDay.getText()); 
-if ( (val >= 31)||(val<1)){ 
+if ( (val > 31)||(val<1)){ 
 JOptionPane.showMessageDialog(this,"Please enter a day between 1 and 31","Warning",JOptionPane.INFORMATION_MESSAGE);}
        
+         int num = Integer.parseInt(txtMonth.getText()); 
+if ( (num > 12)||(num<1)){
+JOptionPane.showMessageDialog(this,"Please enter a month between 1 and 12","Warning",JOptionPane.INFORMATION_MESSAGE);}
+        
+              int yr = Integer.parseInt(txtYear.getText()); 
+if ( (yr > 2100)||(yr<1900)){
+    JOptionPane.showMessageDialog(this,"Please enter a year between 1900 and 2100","Warning",JOptionPane.INFORMATION_MESSAGE);}
+    
+if((!(cbShortDate.isSelected()))&& (!(cbLongDate.isSelected()))){
+    JOptionPane.showMessageDialog(this, "Please choose a type","Warning",JOptionPane.INFORMATION_MESSAGE);
+}
+
+
+        
         if(txtDay.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Please enter a day","Warning",JOptionPane.INFORMATION_MESSAGE);
-        }
+            JOptionPane.showMessageDialog(this, "Please enter a day","Warning",JOptionPane.INFORMATION_MESSAGE);}
+        
         else if(txtMonth.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Please enter a month","Warning",JOptionPane.INFORMATION_MESSAGE);
         }
@@ -323,9 +346,32 @@ JOptionPane.showMessageDialog(this,"Please enter a day between 1 and 31","Warnin
         else if(txtYear.getText().trim().equals("")){
             JOptionPane.showMessageDialog(this, "Please enter a year","Warning",JOptionPane.INFORMATION_MESSAGE);
         }
-       
+        else{
+            String day=txtDay.getText();
+            String month=txtMonth.getText();
+            String year=txtYear.getText();
+            
+        boolean type= cbShortDate.isSelected();
+           
+        
+           String shortDate = 
+                    
+                            cbxShortDate.toString();
+           String longDate = 
+                    
+                            cbxLongDate.toString();
+        
+            DateFormats d = 
+                new DateFormats(day,month,year,type,shortDate,longDate);
+        txtShortDate.setText(d.getShortD());
+        txtLongDate.setText(d.getLongD());
+        }
+        
+        
     }//GEN-LAST:event_btnSubmitActionPerformed
 
+     
+        
     private void txtMonthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMonthKeyTyped
         // TODO add your handling code here:
             if(txtMonth.getText().length()>=2){
@@ -360,6 +406,15 @@ evt.consume();
             JOptionPane.showMessageDialog(this, "Please enter a year","Warning",JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnSubmitKeyPressed
+
+    private void cbLongDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLongDateActionPerformed
+        // TODO add your handling code here:
+        if(cbLongDate.isSelected()){
+        cbxLongDate.setEnabled(true);}
+        else{
+cbxLongDate.setEnabled(false);
+        }
+    }//GEN-LAST:event_cbLongDateActionPerformed
 
     /**
      * @param args the command line arguments

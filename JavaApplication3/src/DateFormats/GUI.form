@@ -214,6 +214,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Long Date"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbLongDateActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblShortDate">
           <Properties>
@@ -228,11 +231,10 @@
         <Component class="javax.swing.JComboBox" name="cbxShortDate">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
+              <StringArray count="3">
                 <StringItem index="0" value="dd/MM/yy"/>
                 <StringItem index="1" value="MM-dd-yy"/>
-                <StringItem index="2" value="yy.MM.dd"/>
-                <StringItem index="3" value="dd,yy,MM"/>
+                <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -243,10 +245,9 @@
         <Component class="javax.swing.JComboBox" name="cbxLongDate">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="2">
                 <StringItem index="0" value="MMMM dd,yyyy"/>
                 <StringItem index="1" value="dd,yyyy MMMM"/>
-                <StringItem index="2" value="yyyy,dd MMMM"/>
               </StringArray>
             </Property>
           </Properties>
